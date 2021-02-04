@@ -14,7 +14,6 @@ A fork from SqlBulkTools</Description>
     <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <PackageLicenseUrl>https://licenses.nuget.org/MIT</PackageLicenseUrl>
     <PackageId>SqlBulkTools.Net</PackageId>
     <Product>SqlBulkTools.Net</Product>
   </PropertyGroup>
