@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25123.0
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.572
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SqlBulkTools", "SqlBulkTools\SqlBulkTools.csproj", "{5CD2EE50-A2E1-4740-AEE4-87E9928F0230}"
 EndProject
@@ -10,6 +10,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SqlBulkTools.IntegrationTests", "SqlBulkTools.IntegrationTests\SqlBulkTools.IntegrationTests.csproj", "{93203B4C-287E-4CCD-8796-988425B9E7F3}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Helpers", "Helpers\Helpers.csproj", "{4E46DE6F-4B77-4F46-9987-4290C11D3AE5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SqlBulkTools.Core", "SqlBulkTools.Core\SqlBulkTools.Core.csproj", "{9C3446E6-C630-4080-A8FB-1D58DA01FDB7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,8 +35,15 @@ Global
 		{4E46DE6F-4B77-4F46-9987-4290C11D3AE5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4E46DE6F-4B77-4F46-9987-4290C11D3AE5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4E46DE6F-4B77-4F46-9987-4290C11D3AE5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9C3446E6-C630-4080-A8FB-1D58DA01FDB7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9C3446E6-C630-4080-A8FB-1D58DA01FDB7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9C3446E6-C630-4080-A8FB-1D58DA01FDB7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9C3446E6-C630-4080-A8FB-1D58DA01FDB7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {A4DD89AD-3898-4C24-93E8-8F003F091886}
 	EndGlobalSection
 EndGlobal
