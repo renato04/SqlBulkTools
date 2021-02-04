@@ -1,35 +1,42 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp2.1</TargetFramework>
+    <TargetFramework>netstandard2.0</TargetFramework>
     <Authors>Renato Ramos</Authors>
-    <Description>Bulk operations helper for .net Core
+    <Description>Bulk operations helper for .net Standard
 Supports Bulk Insert, Update, Delete
 A fork from SqlBulkTools</Description>
+    <PackageLicenseFile></PackageLicenseFile>
     <PackageProjectUrl>https://github.com/renato04/SqlBulkTools</PackageProjectUrl>
     <PackageIcon>icon.png</PackageIcon>
     <RepositoryUrl>https://github.com/renato04/SqlBulkTools</RepositoryUrl>
+    <PackageTags>sql bulk netstandard</PackageTags>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <PackageLicenseExpression></PackageLicenseExpression>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
-    <PackageLicenseFile>License.txt</PackageLicenseFile>
-    <PackageId>SqlServerBulkTools.Core</PackageId>
-    <PackageTags>sql bulk</PackageTags>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="System.Data.SqlClient" Version="4.4.0" />
+    <None Remove="License.txt" />
   </ItemGroup>
 
   <ItemGroup>
+    <None Include="..\Images\icon.png" Link="icon.png">
+      <PackagePath></PackagePath>
+      <Pack>True</Pack>
+    </None>
     <None Include="..\Images\icon.png">
       <Pack>True</Pack>
       <PackagePath></PackagePath>
     </None>
-    <None Include="License.txt">
+    <None Include="..\SqlBulkTools.Core\License.txt">
       <Pack>True</Pack>
       <PackagePath></PackagePath>
     </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="System.Data.SqlClient" Version="4.4.0" />
   </ItemGroup>
 
 </Project>
