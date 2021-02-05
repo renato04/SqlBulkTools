@@ -398,6 +398,7 @@ namespace SqlBulkTools
         /// <param name="bulkCopyTimeout"></param>
         internal void SetSqlBulkCopySettings(SqlBulkCopy bulkcopy, bool bulkCopyEnableStreaming, int? bulkCopyBatchSize, int? bulkCopyNotifyAfter, int bulkCopyTimeout)
         {
+
             bulkcopy.EnableStreaming = bulkCopyEnableStreaming;
 
             if (bulkCopyBatchSize.HasValue)
@@ -531,13 +532,40 @@ namespace SqlBulkTools
         {
             using (SqlBulkCopy bulkcopy = new SqlBulkCopy(conn, sqlBulkCopyOptions, transaction))
             {
-                bulkcopy.DestinationTableName = "#TmpTable";
+                try
+                {
+                    bulkcopy.DestinationTableName = "#TmpTable";
 
-                SetSqlBulkCopySettings(bulkcopy, bulkCopyEnableStreaming,
-                    bulkCopyBatchSize,
-                    bulkCopyNotifyAfter, bulkCopyTimeout);
+                    SetSqlBulkCopySettings(bulkcopy, bulkCopyEnableStreaming,
+                        bulkCopyBatchSize,
+                        bulkCopyNotifyAfter, bulkCopyTimeout);
 
-                bulkcopy.WriteToServer(dt);
+                    bulkcopy.WriteToServer(dt);
+                }
+                catch (SqlException ex)
+                {
+                    if (ex.Message.Contains("Received an invalid column length from the bcp client for colid"))
+                    {
+                        string pattern = @"\d+";
+                        System.Text.RegularExpressions.Match match = System.Text.RegularExpressions.Regex.Match(ex.Message.ToString(), pattern);
+                        var index = Convert.ToInt32(match.Value) - 1;
+
+                        FieldInfo fi = typeof(SqlBulkCopy).GetField("_sortedColumnMappings", BindingFlags.NonPublic | BindingFlags.Instance);
+                        var sortedColumns = fi.GetValue(bulkcopy);
+                        var items = (Object[])sortedColumns.GetType().GetField("_items", BindingFlags.NonPublic | BindingFlags.Instance).GetValue(sortedColumns);
+
+                        FieldInfo itemdata = items[index].GetType().GetField("_metadata", BindingFlags.NonPublic | BindingFlags.Instance);
+                        var metadata = itemdata.GetValue(items[index]);
+
+                        var column = metadata.GetType().GetField("column", BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance).GetValue(metadata);
+                        var length = metadata.GetType().GetField("length", BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance).GetValue(metadata);
+                        throw new FormatException(String.Format("Column: {0} contains data with a length greater than: {1}", column, length));
+                    }
+
+                    throw;
+
+                    throw;
+                }
             }
         }
 
