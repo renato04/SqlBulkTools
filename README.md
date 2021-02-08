@@ -45,6 +45,9 @@ bulk.Setup<Book>(x => x.ForCollection(books))
 
 bulk.CommitTransaction("DefaultConnection");
 
+//For .Net Standard
+//bulk.CommitTransaction("ConnectionString");
+
 /* 
 Notes: 
 
@@ -70,7 +73,8 @@ bulk.Setup<Book>(x => x.ForCollection(books))
 .MatchTargetOn(x => x.ISBN)
 
 bulk.CommitTransaction("DefaultConnection");
-
+//For .Net Standard
+//bulk.CommitTransaction("ConnectionString");
 
 // Another example using an identity column
 
@@ -82,6 +86,8 @@ bulk.Setup<Book>(x => x.ForCollection(books))
 .MatchTargetOn(x => x.Id)
 
 bulk.CommitTransaction("DefaultConnection");
+//For .Net Standard
+//bulk.CommitTransaction("ConnectionString");
 
 /* 
 Notes: 
@@ -129,6 +135,8 @@ identity column.
 */
 
 bulk.CommitTransaction("DefaultConnection");
+//For .Net Standard
+//bulk.CommitTransaction("ConnectionString");
 ```
 ###BulkDelete
 ---------------
@@ -149,6 +157,8 @@ bulk.Setup<BookDto>(x => x.ForCollection(books))
 .MatchTargetOn(x => x.ISBN)
 
 bulk.CommitTransaction("DefaultConnection");
+//For .Net Standard
+//bulk.CommitTransaction("ConnectionString");
 
 /* 
 Notes: 
@@ -176,6 +186,8 @@ bulk.Setup<Book>(x => x.ForCollection(books))
 .BulkInsert();
 
 bulk.CommitTransaction("DefaultConnection");
+//For .Net Standard
+//bulk.CommitTransaction("ConnectionString");
 
 ```
 
@@ -211,6 +223,8 @@ bulk.Setup<Book>(x => x.ForCollection(col))
 .BulkInsert();
 
 bulk.CommitTransaction("DefaultConnection");
+//For .Net Standard
+//bulk.CommitTransaction("ConnectionString");
 
 ```
 
@@ -245,6 +259,9 @@ CommitTransaction(string connectionName, SqlCredential credentials = null)
 CommitTransaction(SqlConnection connection)
 CommitTransactionAsync(string connectionName, SqlCredential credentials = null)
 CommitTransactionAsync(SqlConnection connection)
+
+//For .Net Standard
+//bulk.CommitTransaction("ConnectionString");
 
 /* A transaction will only take place if CommitTransaction is called. CommitTransaction is 
 always called after a valid setup is built and Async flavours are included for scalability. 
