@@ -88,7 +88,7 @@ namespace SqlBulkTools
 
         private string GetVariableCharType(string column, string columnType, Dictionary<string, string> actualColumnsMaxCharLength)
         {
-            if (columnType == "varchar" || columnType == "nvarchar")
+            if (columnType == "varchar" || columnType == "nvarchar" || columnType == "char")
             {
                 string maxCharLength;
                 if (actualColumnsMaxCharLength.TryGetValue(column, out maxCharLength))
