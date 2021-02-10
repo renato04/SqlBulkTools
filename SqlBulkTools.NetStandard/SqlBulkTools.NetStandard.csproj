@@ -16,6 +16,7 @@ A fork from SqlBulkTools</Description>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageId>SqlBulkTools.Net</PackageId>
     <Product>SqlBulkTools.Net</Product>
+    <Version>1.0.1</Version>
   </PropertyGroup>
 
   <ItemGroup>
